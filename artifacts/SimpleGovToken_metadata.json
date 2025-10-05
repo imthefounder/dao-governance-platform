@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.20+commit.a1b79de6"
+		"version": "0.8.24+commit.e11b9ed9"
 	},
 	"language": "Solidity",
 	"output": {
@@ -299,11 +299,11 @@
 	},
 	"sources": {
 		"src/UglyUnicornsGovToken.sol": {
-			"keccak256": "0x5e3a2219b102841f9c1ac9cdab1074f401237d49718222439364b3518f104a89",
+			"keccak256": "0x6de3d80a9f9646e778a1c8aabfcc5c42e3e9fea1cb5806815ea5a089b0e79c39",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://30399bc1c75c6a137fc6c0b071fc66cf9882ec953caf3d37727c6388e9263a4a",
-				"dweb:/ipfs/QmWi3PxdQaMa7642kZ3w95Hz9fpNH5zmpUicDcTSvdpVnM"
+				"bzz-raw://61b1cc4f717a8ad4039aec44869eafbba49b50b3e7a8aab398ed70b718c54feb",
+				"dweb:/ipfs/QmUaJuJgHk1e4cur8VTW3y75iy7kHZWVqVVeBcJzAk8PMQ"
 			]
 		}
 	},
