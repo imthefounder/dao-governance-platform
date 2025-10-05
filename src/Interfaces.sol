@@ -16,6 +16,12 @@ interface IGovToken {
     function balanceOf(address account) external view returns (uint256);
     function burnedAmountOfUtilToken(address account) external view returns (uint256);
     function setBurnedAmountOfUtilToken(address account, uint256 amount) external;
+    function getVotes(address account) external view returns (uint256);
+    function getPastVotes(address account, uint256 blockNumber) external view returns (uint256);
+    function totalSupply() external view returns (uint256);
+    function transfer(address to, uint256 amount) external returns (bool);
+    function transferFrom(address from, address to, uint256 amount) external returns (bool);
+    function approve(address spender, uint256 amount) external returns (bool);
 }
 
 // Interface for Minchyn Governance Wrapper - wraps the existing Minchyn token

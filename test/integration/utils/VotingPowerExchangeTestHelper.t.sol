@@ -2,7 +2,7 @@
 
 pragma solidity 0.8.24;
 
-import {DeployContracts, DeploymentResult} from "script/DeployContracts.s.sol";
+import {DeployContractsV2, DeploymentResultV2} from "script/DeployContractsV2.s.sol";
 import {Test, console} from "forge-std/Test.sol";
 
 import {VotingPowerExchange} from "src/VotingPowerExchange.sol";

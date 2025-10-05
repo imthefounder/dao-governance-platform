@@ -23,7 +23,7 @@
   "homepage": "https://github.com/imthefounder/dao-governance-platform#readme",
   "devDependencies": {
     "@nomicfoundation/hardhat-toolbox": "^6.1.0",
-    "@openzeppelin/contracts": "^5.4.0",
+    "@openzeppelin/contracts": "^5.0.0",
     "@openzeppelin/contracts-upgradeable": "^5.4.0",
     "hardhat": "^3.0.6"
   },
