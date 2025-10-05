@@ -13,23 +13,29 @@ All the contracts are sitting in the `src/` folder. These are the core contracts
 
 This repository consists of the following smart contracts:
 
-- `AmbassadorNft`
-  - The smart contract for the NFT that represents the membership of the community.
-  - This smart contract is independent from the other smart contracts.
-  - The contract is based on the ERC1155 contract of the OpenZeppelin.
+- `UglyUnicornsGovernance`
+  - The smart contract wrapper for the existing Ugly Unicorns NFT collection at 0xA548fa1D539cab8D78163CB064F7b22E6eF34b2F.
+  - Enables Ugly Unicorns NFT holders to participate in DAO governance with voting power.
+  - Provides wrapping/unwrapping functionality to preserve original NFT ownership.
+- `MinchynGovernanceWrapper`
+  - The smart contract wrapper for the existing Minchyn token (MCHN) at 0x91738EE7A9b54eb810198cefF5549ca5982F47B3.
+  - Enables Minchyn token holders to participate in DAO governance by wrapping their tokens.
+  - Provides utility token functionality for exchange with governance tokens.
+  - Enables Ugly Unicorns NFT holders to participate in DAO governance with voting power.
+  - Provides wrapping/unwrapping functionality to preserve original NFT ownership.
 - `ERC20UpgradeableTokenV1`
-  - The smart contract for the ERC20 token that is used to represent the utility token of the community.
-  - Its use case is to be exchanged for the governance token of the community.
-  - Other use cases are possible and it is remained to be defined by the community.
+  - The legacy smart contract for ERC20 tokens (maintained for backward compatibility).
+  - Replaced by MinchynGovernanceWrapper for new implementations.
   - The contract is based on the ERC20Upgradeable contract of the OpenZeppelin.
 - `GovToken`
-  - The smart contract functioning as the governance token of the community.
+  - The smart contract functioning as the governance token of the community (Ugly Unicorns DAO Token - UUDT).
   - The token is used to represent the voting power of the holder which is not transferable.
   - The contract is based on the ERC20Votes contract of the OpenZeppelin.
-- `VotingPowerExchange`
-  - The smart contract for the voting power exchange of the community.
-  - The contract is used to get the governance token by burning the utility token the user holds.
-  - This contract is created from scratch.
+- `VotingPowerExchangeV2`
+  - The enhanced smart contract for voting power exchange supporting both Minchyn tokens and Ugly Unicorns NFTs.
+  - Allows users to exchange Minchyn (MCHN) tokens for governance tokens with quadratic voting power scaling.
+  - Enables Ugly Unicorns NFT holders to gain voting power by participating in governance.
+  - Replaces the original VotingPowerExchange contract with enhanced multi-token support.
 - `DaoGovernor`
   - The smart contract for the DAO governance of the community.
   - The contract is used to manage the proposal of the community in a more decentralized manner.
@@ -67,23 +73,97 @@ The system is managed by different roles. The roles are managed by the default a
 
 ## Smart Contracts
 
-### `AmbassadorNft.sol`
+### `UglyUnicornsGovernance.sol`
 
-This is the smart contract for the NFT that represents the membership of the community. I will give some explanation for the possible use cases and the functions of the NFT.
+This is the smart contract wrapper for the existing Ugly Unicorns NFT collection that enables governance participation and serves as the primary NFT system for the DAO.
 
-This contract is independent from other smart contracts in the current system.
+#### Contract Address and Integration
 
-#### Possible use cases and functions explanation
+- **Original Ugly Unicorns NFT**: `0xA548fa1D539cab8D78163CB064F7b22E6eF34b2F`
+- **Collection Name**: Ugly Unicorns
+- **Max Supply**: 1,013 NFTs
+- **Governance Token Symbol**: UUGOV
 
-The NFT can be used to represent the membership of the community. For example, membership of A can be represented by NFT1155's id 0 and membership of B can be represented by NFT1155's id 1. Anyone who holds the NFT can be considered as the member of the community.
+#### Use cases and functions explanation
 
-The default admin role has the right to set the minter and the burner role. The minter role is the role that can mint new tokens. The burner role is the role that can burn the tokens from the specified account.
+The wrapper allows Ugly Unicorns NFT holders to participate in DAO governance by:
 
-There are functions to batch mint and batch burn the NFTs. With these functions, the minter and burner roles can easily mint and burn the NFTs for the members.
+1. **Wrapping original NFTs** to receive governance-enabled NFTs
+2. **Maintaining original ownership** while enabling voting capabilities
+3. **Configurable voting power** per NFT (default: 1 vote = 1e18 voting power)
+4. **Special NFT bonuses** through custom voting power settings
+5. **Unwrapping functionality** to retrieve original NFTs
 
-And the URI of the NFT can be set by the URI setter role after the deployment of the contract.
+Key features:
+- **Non-custodial wrapping**: Original NFTs are held securely in the contract
+- **Flexible voting power**: Base voting power + custom bonuses for special NFTs
+- **ERC721Votes compliance**: Full integration with OpenZeppelin governance standards
+- **Emergency rescue functions**: Admin controls for safety
+- **Enumerable tracking**: Easy querying of wrapped NFT holdings
 
-### `ERC20UpgradeableTokenV1.sol`
+The contract integrates with `VotingPowerExchangeV2` to enable NFT holders to exchange their voting power for governance tokens.
+
+### `MinchynGovernanceWrapper.sol`
+
+This is the smart contract wrapper for the existing Minchyn token (MCHN) that enables integration with the DAO governance system.
+
+#### Contract Address and Integration
+
+- **Original Minchyn Token**: `0x91738EE7A9b54eb810198cefF5549ca5982F47B3`
+- **Token Symbol**: MCHN
+- **Decimals**: 18
+- **Wrapper Token Symbol**: wMCHN
+
+#### Use cases and functions explanation
+
+The wrapper allows Minchyn token holders to participate in DAO governance by:
+
+1. **Depositing Minchyn tokens** to receive wrapped utility tokens (wMCHN)
+2. **Using wrapped tokens** for voting power exchange through the governance system
+3. **Withdrawing original Minchyn tokens** by burning wrapped tokens
+4. **Exchange rate management** for flexible token economics
+
+Key features:
+- **1:1 default exchange rate** between MCHN and wMCHN (configurable)
+- **Minimum deposit/withdrawal amounts** to prevent spam transactions
+- **Role-based access control** for governance integration
+- **Emergency withdrawal functionality** for admin safety
+
+The contract integrates with `VotingPowerExchangeV2` to enable Minchyn holders to gain voting power in the DAO through quadratic scaling mechanisms.
+
+### `UglyUnicornsGovernance.sol`
+
+This is the smart contract wrapper for the existing Ugly Unicorns NFT collection that enables governance participation.
+
+#### Contract Address and Integration
+
+- **Original Ugly Unicorns NFT**: `0xA548fa1D539cab8D78163CB064F7b22E6eF34b2F`
+- **Collection Name**: Ugly Unicorns
+- **Max Supply**: 1,013 NFTs
+- **Governance Token Symbol**: UUGOV
+
+#### Use cases and functions explanation
+
+The wrapper allows Ugly Unicorns NFT holders to participate in DAO governance by:
+
+1. **Wrapping original NFTs** to receive governance-enabled NFTs
+2. **Maintaining original ownership** while enabling voting capabilities
+3. **Configurable voting power** per NFT (default: 1 vote = 1e18 voting power)
+4. **Special NFT bonuses** through custom voting power settings
+5. **Unwrapping functionality** to retrieve original NFTs
+
+Key features:
+- **Non-custodial wrapping**: Original NFTs are held securely in the contract
+- **Flexible voting power**: Base voting power + custom bonuses for special NFTs
+- **ERC721Votes compliance**: Full integration with OpenZeppelin governance standards
+- **Emergency rescue functions**: Admin controls for safety
+- **Enumerable tracking**: Easy querying of wrapped NFT holdings
+
+The contract integrates with `VotingPowerExchangeV2` to enable NFT holders to exchange their voting power for governance tokens.
+
+### `ERC20UpgradeableTokenV1.sol` (Legacy)
+
+This is the legacy smart contract for ERC20 tokens, maintained for backward compatibility but replaced by MinchynGovernanceWrapper for new implementations.
 
 This is the smart contract for the ERC20 token that is used to represent the utility token of the community. This utility token is transferable.
 
@@ -101,55 +181,83 @@ The contract itself is pausable. The pauser role is the role that can pause and 
 
 ### `GovToken.sol`
 
-This is the smart contract for the governance token of the community. The contract is based on the ERC20Votes contract of the OpenZeppelin. The contract also records the amount of utility token that one holder has burned.
+This is the smart contract for the governance token of the community (Ugly Unicorns DAO Token - UUDT). The contract is based on the ERC20Votes contract of the OpenZeppelin and records the amount of utility tokens that holders have burned for voting power.
 
-Only the voting power exchange contract has the right to update the amount of utility token that one holder has burned.
+Only the voting power exchange contract has the right to update the amount of utility tokens that holders have burned.
 
 #### Use cases and functions explanation
 
-The token is used to represent the voting power of the holder. The token is not transferable. At the same time, it is also used to represent the level of the holder, e.g. the higher the level, the more voting power the holder has.
-For example, holding 1 token means the holder is level 2. Holding 0 token means the holder is level 1.
+The token represents voting power in the Ugly Unicorns DAO. Key characteristics:
+- **Non-transferable**: Prevents vote buying and ensures merit-based governance
+- **Level-based system**: Token balance represents user level and voting power
+- **Achievement tracking**: Records burned utility tokens as permanent achievement markers
 
-The token is not transferable. It means the token holder cannot transfer the token to any other address.
+Token mechanics:
+- Holding 1 UUDT token = Level 2 governance participant
+- Holding 0 UUDT tokens = Level 1 governance participant  
+- Quadratic scaling rewards long-term community participation
 
-ERC20Permit is inherited here because OpenZeppelin's wizard is doing so and we followed its code, which is a relatively secure way in our opinion.
+The token integrates with both Minchyn token holders and Ugly Unicorns NFT holders through the enhanced exchange system.
 
-#### Notes
+#### Integration with Minchyn and Ugly Unicorns
 
-There are 2 phases when we want to utilize this token in the protocol. After kicking off as Phase 1, the community governance will be under observation. When phase 1 is stable and mature, we will transition into phase 2 gradually in the future.
+The governance token can be earned through:
+1. **Minchyn Token Exchange**: Burn wMCHN (wrapped Minchyn) to earn UUDT with quadratic scaling
+2. **Ugly Unicorns NFT Participation**: Exchange NFT voting power for UUDT governance tokens
+3. **Community Activities**: Traditional utility token burning (legacy support)
 
-- Phase 1:
-  We use the token to represent the voting power of the holder. And manage governance off-chain using the token balance of the governance participants.
+#### Governance Phases
+
+- **Phase 1**: Off-chain governance using UUDT token balances with Minchyn and NFT integration
+- **Phase 2**: Full on-chain governance with multi-token voting power aggregation
 
 <div style="text-align: center;">
   <img src="./images/phaseOneImage.png" alt="Phase 1" width="80%"/>
 </div>
 
-- Phase 2:
-  We use the token to represent the voting power, i.e. level, of the holder. And manage governance on-chain using the token balance of the governance participants.
-
 <div style="text-align: center;">
   <img src="./images/phaseTwoImage.png" alt="Phase 2" width="80%"/>
 </div>
 
-The GovToken is in a sense an achievement recorder. We want to make sure the achievement system is transparent and verifiable for all participants. That is why we did not make this token upgradable.
+### `VotingPowerExchangeV2.sol`
 
-In fact, voting units in the token must be delegated to someone to be counted as actual voting power. The reason is mentioned in the documentation of OpenZeppelin contract.
+This enhanced contract enables users to exchange both Minchyn tokens and Ugly Unicorns NFTs for governance tokens (UUDT). It replaces the original VotingPowerExchange with multi-token support and improved functionality.
 
-> In fact, voting units _must_ be delegated in order to count as actual votes, and an account has to
-> delegate those votes to itself if it wishes to participate in decisions and does not have a trusted representative.
+#### Multi-Token Exchange System
 
-### `VotingPowerExchange.sol`
+The contract supports three exchange methods:
 
-This contract is used to exchange the utility token for the governance token. The exchange is done by burning the governance token and minting the utility token.
+1. **Minchyn Token Exchange** (`exchangeMinchyn`)
+   - Burn wrapped Minchyn tokens (wMCHN) for governance tokens
+   - Quadratic scaling: `newLevel = √(burnedAmount)` 
+   - Signature-based validation for security
+   - Voting power cap enforcement
 
-The voting power exchange contract is the minter of the governance token and the burner of the utility token.
+2. **Ugly Unicorns NFT Exchange** (`exchangeUglyUnicorns`)
+   - Exchange NFT voting power for governance tokens
+   - Configurable voting power per NFT (default: 5 UUDT per NFT)
+   - Anti-double-spending protection
+   - Batch NFT processing support
 
-#### Use cases and functions explanation
+3. **Legacy Token Support**
+   - Maintains backward compatibility with existing utility tokens
+   - Gradual migration path to new system
 
-The contract has several functions to calculate the amount governance token the holder deserve to get by burning the utility token that he has.
+#### Key Features
 
-The main function is `exchange()`. It is the function that can only be called by the exchanger role.
+- **EIP-712 signature validation** for secure off-chain to on-chain transitions
+- **Voting power caps** to prevent governance concentration
+- **Role-based access control** with EXCHANGER_ROLE for trusted operators
+- **Emergency controls** and admin functions for safety
+- **Gas-optimized calculations** for cost-effective exchanges
+
+#### Use Cases
+
+The contract enables:
+- Minchyn holders to gain DAO voting power proportional to token commitment
+- Ugly Unicorns NFT collectors to participate in governance decisions  
+- Flexible voting power economics through configurable exchange rates
+- Secure bridging between different token ecosystems and DAO governance
 Exchanger role is the role that supposed to be managed by the protocol owner.
 
 The function first checks the validity of the input which includes the sender's signature. The signature is generated off-chain and it can only be generated by the sender himself.
@@ -254,10 +362,11 @@ Preparation:
 ### Scope
 
 - src/
-  - AmbassadorNft.sol
+  - UglyUnicornsGovernance.sol
+  - MinchynGovernanceWrapper.sol
   - ERC20UpgradeableTokenV1.sol
   - GovToken.sol
-  - VotingPowerExchange.sol
+  - VotingPowerExchangeV2.sol
   - DaoGovernor.sol
   - Timelock.sol
 

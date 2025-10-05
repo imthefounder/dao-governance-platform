@@ -5,7 +5,6 @@ pragma solidity 0.8.24;
 import {Test, console} from "forge-std/Test.sol";
 import {Math} from "@openzeppelin/contracts/utils/math/Math.sol";
 import {PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol";
-import {AmbassadorNft} from "src/AmbassadorNft.sol";
 import {DeployContracts, DeploymentResult} from "script/DeployContracts.s.sol";
 import {ERC20UpgradeableTokenV1} from "src/ERC20UpgradeableTokenV1.sol";
 import {GovToken} from "src/GovToken.sol";
