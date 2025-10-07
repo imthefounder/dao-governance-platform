@@ -9,11 +9,11 @@
 The "shares" referenced throughout the Minchyn Founding Member Club platform are **APPRECIATION GIFTS ONLY** and carry **NO LEGAL RIGHTS OR FINANCIAL VALUE**.
 
 **Key Points:**
-- ❌ **NOT SECURITIES**: These do not represent ownership in any company
-- ❌ **NO LEGAL RIGHTS**: No voting, profit, or liquidation rights
-- ❌ **NO FINANCIAL VALUE**: Cannot be sold, transferred, or redeemed for money
-- ❌ **NO OWNERSHIP**: Do not grant any equity stake in Minchyn or affiliates
-- ✅ **GAMIFICATION ONLY**: Purely symbolic recognition of founding member status
+- The "shares" referenced in our platform represent **appreciation gifts** for founding members
+- These are gifted equity stakes in Minchyn, INC. distributed to Founding Members Club, LLC., which oversees the communications between Minchyn, Inc. and Founding Members Club's 22,222 Ugly Unicorn NFT holders.
+- Gifted shares do carry **LEGAL OWNERSHIP** rights in Minchyn
+- These shares are purely **gifts** to recognize early brand supporters
+- Gifted equity share claims can only be made after the 4 year vesting period and may be requested only by the holder of an Ugly Unicorns NFT that hasn't yet submitted a claim (Qualified Holder), not the previous owner (Unqualified Holder), nor an owner that buys or recieves the NFT after a claim has been made and honored (Unqualified Holder).
 
 ### CALCULATION TRANSPARENCY
 
