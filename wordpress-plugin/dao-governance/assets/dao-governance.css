@@ -1,0 +1,861 @@
+/**
+ * DAO Governance Plugin - Enhanced Styles
+ * Version: 2.0.0
+ */
+
+/* ===== GLOBAL STYLES ===== */
+
+:root {
+  --dao-primary: #667eea;
+  --dao-secondary: #764ba2;
+  --dao-accent: #4caf50;
+  --dao-warning: #ff9800;
+  --dao-danger: #f44336;
+  --dao-light: #f8f9fa;
+  --dao-dark: #333;
+  --dao-border: #e0e0e0;
+  --dao-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --dao-shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.15);
+  --dao-gradient: linear-gradient(135deg, var(--dao-primary) 0%, var(--dao-secondary) 100%);
+  --dao-gradient-light: linear-gradient(135deg, #f8f9ff 0%, #e8f0fe 100%);
+  --dao-border-radius: 12px;
+  --dao-border-radius-small: 6px;
+  --dao-transition: all 0.3s ease;
+}
+
+/* Base container styles */
+.dao-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  line-height: 1.6;
+  color: var(--dao-dark);
+}
+
+/* ===== TYPOGRAPHY ===== */
+
+.dao-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  background: var(--dao-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dao-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.dao-section-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--dao-dark);
+}
+
+/* ===== BUTTONS ===== */
+
+.dao-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: var(--dao-border-radius-small);
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--dao-transition);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.dao-btn-primary {
+  background: var(--dao-gradient);
+  color: white;
+}
+
+.dao-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--dao-shadow-hover);
+}
+
+.dao-btn-secondary {
+  background: transparent;
+  color: var(--dao-primary);
+  border: 2px solid var(--dao-primary);
+}
+
+.dao-btn-secondary:hover {
+  background: var(--dao-primary);
+  color: white;
+}
+
+.dao-btn-success {
+  background: var(--dao-accent);
+  color: white;
+}
+
+.dao-btn-warning {
+  background: var(--dao-warning);
+  color: white;
+}
+
+.dao-btn-danger {
+  background: var(--dao-danger);
+  color: white;
+}
+
+.dao-btn-sm {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+}
+
+.dao-btn-lg {
+  padding: 16px 32px;
+  font-size: 1.1rem;
+}
+
+.dao-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* ===== CARDS ===== */
+
+.dao-card {
+  background: white;
+  border-radius: var(--dao-border-radius);
+  padding: 25px;
+  box-shadow: var(--dao-shadow);
+  transition: var(--dao-transition);
+  border: 1px solid var(--dao-border);
+}
+
+.dao-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--dao-shadow-hover);
+}
+
+.dao-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--dao-border);
+}
+
+.dao-card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 0;
+  color: var(--dao-dark);
+}
+
+.dao-card-body {
+  padding: 0;
+}
+
+.dao-card-footer {
+  margin-top: 20px;
+  padding-top: 15px;
+  border-top: 1px solid var(--dao-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ===== GRIDS ===== */
+
+.dao-grid {
+  display: grid;
+  gap: 25px;
+}
+
+.dao-grid-2 {
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.dao-grid-3 {
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.dao-grid-4 {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* ===== METRICS & STATS ===== */
+
+.dao-metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.dao-metric-card {
+  background: white;
+  border-radius: var(--dao-border-radius);
+  padding: 20px;
+  box-shadow: var(--dao-shadow);
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  transition: var(--dao-transition);
+}
+
+.dao-metric-card:hover {
+  transform: translateY(-2px);
+}
+
+.dao-metric-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--dao-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.dao-metric-content {
+  flex: 1;
+}
+
+.dao-metric-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--dao-dark);
+  margin-bottom: 4px;
+}
+
+.dao-metric-label {
+  color: #666;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.dao-metric-change {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-top: 4px;
+}
+
+.dao-metric-change.positive {
+  color: var(--dao-accent);
+}
+
+.dao-metric-change.negative {
+  color: var(--dao-danger);
+}
+
+/* ===== TABS ===== */
+
+.dao-tabs {
+  display: flex;
+  border-bottom: 2px solid var(--dao-border);
+  margin-bottom: 30px;
+  overflow-x: auto;
+}
+
+.dao-tab-btn {
+  background: none;
+  border: none;
+  padding: 15px 25px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: var(--dao-transition);
+  white-space: nowrap;
+  color: #666;
+}
+
+.dao-tab-btn.active {
+  border-bottom-color: var(--dao-primary);
+  color: var(--dao-primary);
+  font-weight: 600;
+}
+
+.dao-tab-btn:hover {
+  background: var(--dao-light);
+  color: var(--dao-primary);
+}
+
+.dao-tab-content {
+  display: none;
+}
+
+.dao-tab-content.active {
+  display: block;
+}
+
+/* ===== FORMS ===== */
+
+.dao-form-group {
+  margin-bottom: 20px;
+}
+
+.dao-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: var(--dao-dark);
+}
+
+.dao-input,
+.dao-select,
+.dao-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid var(--dao-border);
+  border-radius: var(--dao-border-radius-small);
+  font-size: 1rem;
+  transition: var(--dao-transition);
+  background: white;
+}
+
+.dao-input:focus,
+.dao-select:focus,
+.dao-textarea:focus {
+  border-color: var(--dao-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.dao-textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.dao-checkbox {
+  width: auto;
+  margin-right: 8px;
+}
+
+/* ===== PROGRESS BARS ===== */
+
+.dao-progress {
+  width: 100%;
+  height: 12px;
+  background: var(--dao-light);
+  border-radius: 6px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.dao-progress-fill {
+  height: 100%;
+  background: var(--dao-gradient);
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+.dao-progress-text {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--dao-dark);
+  margin-top: 5px;
+}
+
+/* ===== BADGES ===== */
+
+.dao-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.dao-badge-primary {
+  background: #e8f0fe;
+  color: var(--dao-primary);
+}
+
+.dao-badge-success {
+  background: #e8f5e8;
+  color: var(--dao-accent);
+}
+
+.dao-badge-warning {
+  background: #fff3cd;
+  color: var(--dao-warning);
+}
+
+.dao-badge-danger {
+  background: #ffebee;
+  color: var(--dao-danger);
+}
+
+/* ===== MODALS ===== */
+
+.dao-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--dao-transition);
+}
+
+.dao-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dao-modal-content {
+  background: white;
+  border-radius: var(--dao-border-radius);
+  padding: 0;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  transform: translateY(20px);
+  transition: var(--dao-transition);
+}
+
+.dao-modal.active .dao-modal-content {
+  transform: translateY(0);
+}
+
+.dao-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--dao-border);
+}
+
+.dao-modal-title {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--dao-dark);
+}
+
+.dao-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: var(--dao-transition);
+}
+
+.dao-modal-close:hover {
+  background: var(--dao-light);
+}
+
+.dao-modal-body {
+  padding: 20px;
+}
+
+.dao-modal-footer {
+  padding: 20px;
+  border-top: 1px solid var(--dao-border);
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+/* ===== LOADING STATES ===== */
+
+.dao-loading {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.dao-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--dao-light);
+  border-top: 4px solid var(--dao-primary);
+  border-radius: 50%;
+  animation: dao-spin 1s linear infinite;
+  margin: 0 auto 20px;
+}
+
+@keyframes dao-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.dao-skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: dao-skeleton 1.5s infinite;
+  border-radius: var(--dao-border-radius-small);
+}
+
+@keyframes dao-skeleton {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ===== ERROR STATES ===== */
+
+.dao-error {
+  text-align: center;
+  padding: 60px 20px;
+  background: #ffebee;
+  border-radius: var(--dao-border-radius);
+  border: 2px solid #ffcdd2;
+  color: var(--dao-danger);
+}
+
+.dao-error h3 {
+  margin-bottom: 10px;
+  color: var(--dao-danger);
+}
+
+.dao-error p {
+  margin-bottom: 20px;
+  color: #666;
+}
+
+/* ===== LISTS ===== */
+
+.dao-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dao-list-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--dao-border);
+  transition: var(--dao-transition);
+}
+
+.dao-list-item:last-child {
+  border-bottom: none;
+}
+
+.dao-list-item:hover {
+  background: var(--dao-light);
+  margin: 0 -15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  border-radius: var(--dao-border-radius-small);
+}
+
+.dao-list-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--dao-gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  font-size: 1.2rem;
+}
+
+.dao-list-content {
+  flex: 1;
+}
+
+.dao-list-title {
+  font-weight: 600;
+  color: var(--dao-dark);
+  margin-bottom: 4px;
+}
+
+.dao-list-subtitle {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.dao-list-meta {
+  color: #999;
+  font-size: 0.8rem;
+}
+
+/* ===== ALERTS ===== */
+
+.dao-alert {
+  padding: 15px 20px;
+  border-radius: var(--dao-border-radius-small);
+  margin-bottom: 20px;
+  border: 1px solid;
+}
+
+.dao-alert-success {
+  background: #e8f5e8;
+  color: var(--dao-accent);
+  border-color: #c8e6c8;
+}
+
+.dao-alert-warning {
+  background: #fff3cd;
+  color: var(--dao-warning);
+  border-color: #ffeaa7;
+}
+
+.dao-alert-danger {
+  background: #ffebee;
+  color: var(--dao-danger);
+  border-color: #ffcdd2;
+}
+
+.dao-alert-info {
+  background: #e8f0fe;
+  color: var(--dao-primary);
+  border-color: #bbdefb;
+}
+
+/* ===== UTILITIES ===== */
+
+.dao-text-center { text-align: center; }
+.dao-text-left { text-align: left; }
+.dao-text-right { text-align: right; }
+
+.dao-mb-0 { margin-bottom: 0; }
+.dao-mb-1 { margin-bottom: 0.5rem; }
+.dao-mb-2 { margin-bottom: 1rem; }
+.dao-mb-3 { margin-bottom: 1.5rem; }
+.dao-mb-4 { margin-bottom: 2rem; }
+
+.dao-mt-0 { margin-top: 0; }
+.dao-mt-1 { margin-top: 0.5rem; }
+.dao-mt-2 { margin-top: 1rem; }
+.dao-mt-3 { margin-top: 1.5rem; }
+.dao-mt-4 { margin-top: 2rem; }
+
+.dao-p-0 { padding: 0; }
+.dao-p-1 { padding: 0.5rem; }
+.dao-p-2 { padding: 1rem; }
+.dao-p-3 { padding: 1.5rem; }
+.dao-p-4 { padding: 2rem; }
+
+.dao-d-none { display: none; }
+.dao-d-block { display: block; }
+.dao-d-flex { display: flex; }
+.dao-d-grid { display: grid; }
+
+.dao-flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dao-flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dao-flex-wrap { flex-wrap: wrap; }
+.dao-flex-nowrap { flex-wrap: nowrap; }
+
+.dao-w-100 { width: 100%; }
+.dao-h-100 { height: 100%; }
+
+.dao-position-relative { position: relative; }
+.dao-position-absolute { position: absolute; }
+
+.dao-overflow-hidden { overflow: hidden; }
+.dao-overflow-auto { overflow: auto; }
+
+/* ===== RESPONSIVE DESIGN ===== */
+
+@media (max-width: 768px) {
+  .dao-container {
+    padding: 15px;
+  }
+  
+  .dao-title {
+    font-size: 2rem;
+  }
+  
+  .dao-metrics {
+    grid-template-columns: 1fr;
+  }
+  
+  .dao-grid-2,
+  .dao-grid-3,
+  .dao-grid-4 {
+    grid-template-columns: 1fr;
+  }
+  
+  .dao-tabs {
+    flex-direction: column;
+  }
+  
+  .dao-tab-btn {
+    border-bottom: none;
+    border-left: 3px solid transparent;
+    text-align: left;
+  }
+  
+  .dao-tab-btn.active {
+    border-bottom: none;
+    border-left-color: var(--dao-primary);
+  }
+  
+  .dao-modal-content {
+    width: 95%;
+    margin: 20px;
+  }
+  
+  .dao-card {
+    padding: 15px;
+  }
+  
+  .dao-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .dao-modal-footer {
+    flex-direction: column;
+  }
+  
+  .dao-modal-footer .dao-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .dao-container {
+    padding: 10px;
+  }
+  
+  .dao-title {
+    font-size: 1.8rem;
+  }
+  
+  .dao-subtitle {
+    font-size: 1rem;
+  }
+  
+  .dao-metric-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .dao-card-header {
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .dao-card-footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+
+@media print {
+  .dao-btn,
+  .dao-modal,
+  .dao-tab-btn {
+    display: none !important;
+  }
+  
+  .dao-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+  
+  .dao-container {
+    max-width: none;
+    padding: 0;
+  }
+}
+
+/* ===== HIGH CONTRAST MODE ===== */
+
+@media (prefers-contrast: high) {
+  :root {
+    --dao-primary: #0056b3;
+    --dao-secondary: #495057;
+    --dao-border: #000;
+    --dao-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  .dao-card {
+    border: 2px solid #000;
+  }
+  
+  .dao-btn {
+    border: 2px solid #000;
+  }
+}
+
+/* ===== REDUCED MOTION ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .dao-spinner {
+    animation: none;
+    border: 4px solid var(--dao-primary);
+  }
+}
+
+/* ===== DARK MODE SUPPORT ===== */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dao-dark: #e0e0e0;
+    --dao-light: #2a2a2a;
+    --dao-border: #404040;
+  }
+  
+  .dao-card,
+  .dao-modal-content,
+  .dao-input,
+  .dao-select,
+  .dao-textarea {
+    background: #1a1a1a;
+    color: var(--dao-dark);
+    border-color: var(--dao-border);
+  }
+  
+  .dao-metric-card,
+  .dao-list-item:hover {
+    background: #2a2a2a;
+  }
+  
+  .dao-tab-btn:hover {
+    background: #2a2a2a;
+  }
+}
+
+/* Component-specific styles are included in individual template files */
